@@ -66,8 +66,9 @@ function processLength(list, cb) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
-  /* CODE HERE */
+function processLastItem(stringList, cb) {
+  let getString = stringList[1];
+  return cb(getString);
 }
 
 /**
@@ -87,8 +88,13 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(numberList, cb) {
+  let sum = 0;
+
+  for (let i = 0; i < numberList.length; i++) {
+    sum += numberList[i];
+  }
+  return cb(sum);
 }
 
 /**
@@ -109,8 +115,9 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1, num2, cb) {
+  let product = num1 * num2;
+  return cb(product);
 }
 
 /**
@@ -133,8 +140,14 @@ function processProduct(/* CODE HERE */) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
-  /* CODE HERE */
+function processContains(item, list, cb) {
+      if (item === list){
+        cb = true;
+        return cb;
+      }else{
+        cb = false;
+        return cb;
+      };
 }
 
 /**
