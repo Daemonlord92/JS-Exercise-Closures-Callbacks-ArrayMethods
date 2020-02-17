@@ -141,13 +141,12 @@ function processProduct(num1, num2, cb) {
  * should return "sad".
 */
 function processContains(item, list, cb) {
-      if (item === list){
-        cb = true;
-        return cb;
-      }else{
-        cb = false;
-        return cb;
-      };
+  if (item === list){
+    return cb(true);
+  }
+  if (item !== list){
+    return cb(false);
+  };
 }
 
 /**
@@ -191,8 +190,12 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+function getFullNames(runners) {
+  const runnerList = [];
+  runners.forEach(function(runners){
+    runnerList.push(`${runners.last_name}, ${runners.first_name}`);
+  });
+  return runnerList;
 }
 
 /**
