@@ -67,8 +67,7 @@ function processLength(list, cb) {
  * should return 'barbar'.
 */
 function processLastItem(stringList, cb) {
-  let getString = stringList[1];
-  return cb(getString);
+  return cb(stringList[stringList.length - 1]);
 }
 
 /**
@@ -141,12 +140,7 @@ function processProduct(num1, num2, cb) {
  * should return "sad".
 */
 function processContains(item, list, cb) {
-  if (item === list){
-    return cb(true);
-  }
-  if (item !== list){
-    return cb(false);
-  };
+  return cb(list.includes(item));
 }
 
 /**
@@ -231,8 +225,11 @@ function firstNamesAllCaps(runners) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
+function getRunnersByTShirtSize(runners, tShirtSize) {
   /* CODE HERE */
+  const sizeList = [];
+
+  return sizeList;
 }
 
 /**
@@ -269,7 +266,7 @@ function counterMaker() {
   // BROKEN CODE STARTS
   const count = 0;
   function counter() {
-    ++count
+    count++;
   }
   // BROKEN CODE ENDS
 }
@@ -294,8 +291,15 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(num) {
+  let count = 0;
+  function counter(num){
+    for (let i =0; i < num; i++){
+      count++;
+      return count;
+    };
+  }
+  return counter(num);
 }
 
 /////////////// END OF CHALLENGE ///////////////
