@@ -162,8 +162,14 @@ function processContains(item, list, cb) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  const uniqueList = [];
+  list.forEach(element => {
+    if (!uniqueList.includes(element)) {
+      uniqueList.push(element);
+    }
+  });
+  return callback(uniqueList);
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -241,8 +247,10 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  return runners.reduce((accumulator, runner) => {
+    return accumulator + runner.donation;
+  }, 0)
 }
 
 /////////////// CLOSURES ///////////////
@@ -262,12 +270,10 @@ function tallyUpDonations(/* CODE HERE */) {
  * etc
 */
 function counterMaker() {
-  // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    count++;
+  let count = -1;
+  return function counter() {
+    return count += 1;
   }
-  // BROKEN CODE ENDS
 }
 
 /**
@@ -291,14 +297,10 @@ function counterMaker() {
  * etc
 */
 function counterMakerWithLimit(num) {
-  let count = 0;
-  function counter(num){
-    for (let i =0; i < num; i++){
-      count++;
-      return count;
-    };
+  let count = -1;
+  return function() {
+    return (count < num) ? count += 1 : count = 0;
   }
-  return counter(num);
 }
 
 /////////////// END OF CHALLENGE ///////////////
